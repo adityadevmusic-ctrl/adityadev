@@ -44,7 +44,7 @@ Your rain-soaked face with composed, neutral expression in Madrid night. Teal-li
 **Technical Execution:**
 - Orbit rig: smooth circular motion (motorized crane arm or robotic arm)
 - Radius: CONSTANT ~5-6 feet (no expansion, no dolly out)
-- Direction: Clockwise full 360° rotation
+- Direction: Counter-clockwise full 360° rotation (opposite direction)
 - Focal length: LOCKED (no zoom in/out at all)
 - Vertical movement: NONE (steady height throughout)
 - No pause or transition (one fluid 10-second circular movement)
@@ -233,7 +233,7 @@ Weave: Visible knit texture (wool detail prominent, especially when wet)
 Fit: Tailored, structured (professional, elegant, timeless)
 Wetness: Progressively soaked throughout (water streams, heavy fabric clings)
 Weight: Visible heavy material response to gravity and rain saturation
-Movement: Flows and swings with purposeful walk (adds visual drama)
+Movement: Drapes elegantly from stationary standing position (adds visual grace and weight)
 Color: Deep black, teal-graded for cinematic effect
 Details: Collar visible in close-up, hem trailing in wide shots
 Wool character: Fabric darkens when wet, knit pattern visible, professional prestige
@@ -269,8 +269,8 @@ Wool character: Fabric darkens when wet, knit pattern visible, professional pres
 
 **Audio:**
 - Stereo mix (intimate to environmental)
-- Rain layered
-- Footsteps synchronized
+- Rain layered (no footsteps, no movement SFX)
+- Breathing audible in close-up
 - Ambient Madrid night sounds
 - Optional minimal music
 
