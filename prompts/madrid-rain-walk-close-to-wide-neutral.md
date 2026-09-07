@@ -1,4 +1,4 @@
-GEMINI OMNI ULTRA | MADRID RAIN WALK - ONE SHOT | 10 SEC | TEAL BLUE | ORBIT | NO SMILE
+GEMINI OMNI ULTRA | MADRID RAIN SCREAM - ONE SHOT | 10 SEC | TEAL BLUE | ORBIT | NATURAL SCREAM
 
 [CREATIVE DIRECTION]
 Single continuous take - no cuts, no transitions
@@ -12,7 +12,7 @@ AESTHETIC: Stylized indie cinema, professional cool, contemplative, cinematic or
 ---
 
 [LOGLINE]
-Extreme close-up on your rain-soaked face in Madrid night. Neutral composed expression, teal-lit rain drops, focused determination. Camera orbits around you in one continuous 360 shot, revealing your solitary presence through rain-soaked streets in black woollen overcoat from all perspectives. Vertigo subtly warps the world as you emerge from intimate frame to sweeping urban landscape. 10 seconds of pure cinematic intensity.
+Extreme close-up on your rain-soaked face in Madrid night. Intense natural scream, raw emotion, teal-lit rain drops, focused determination. Camera orbits around you in one continuous 360 shot, revealing your solitary scream through rain-soaked streets in black woollen overcoat from all perspectives. Vertigo subtly warps the world as you emerge from intimate frame to sweeping urban landscape. 10 seconds of pure cinematic intensity.
 
 ---
 
@@ -61,25 +61,27 @@ Mood: Cinematic contemplation, focused determination, solitary intensity
 [CHARACTER - ADITYA D (INTIMATE TO WIDE)]
 
 **EXTREME CLOSE-UP (0-2s):**
-- Eyes: Forward-focused, clear, intense micro-expressions
-- Face: Rain droplets on skin (visible detail level)
-- Skin texture: Natural, human (no digital perfection)
-- Expression: Neutral, composed (controlled, focused)
-- Mouth: Neutral line, closed (no smile, no teeth visible)
-- Lips: Closed, straight line (no upward curve, flat composure)
-- Jaw: Tense, set with focus and determination
-- Breath: Visible in cold rain (intimate detail)
+- Eyes: Wide, intense, raw emotional power
+- Face: Rain droplets on skin (visible detail level), facial tension from vocalization
+- Skin texture: Natural, human (no digital perfection), muscles engaged
+- Expression: Intense natural scream, raw authentic emotion
+- Mouth: Open in scream, natural jaw position, authentic vocal expression (teeth visible)
+- Lips: Open, pulled back by scream intensity, raw vocal power visible
+- Jaw: Tense, engaged, set with focused emotional release
+- Breath: Visible, heavy, raw intensity in vocalization
 - Eyelashes: Rain-wet, catching teal light
+- Neck: Visible tension from natural scream effort
 - Collar: Black overcoat visible at frame edge (wet, heavy fabric)
 
 **WIDE REVEAL (5-10s):**
-- Full body: Black overcoat, wet from rain, flowing with movement
-- Hair: Dark, matted with rain (gravity realistic)
-- Posture: Focused stance, purposeful presence
-- Gait: Natural human pace (~1.5 m/s)
-- Expression: Neutral composure maintained (focused, no teeth visible)
-- Wardrobe: Heavy overcoat fabric soaked, draping dramatically
-- Overall presence: Professional, composed, focused intensity
+- Full body: Black overcoat, wet from rain, moving with natural body expression
+- Hair: Dark, matted with rain (gravity realistic), wind-blown from movement
+- Posture: Intense natural scream stance, body engaged with vocal release
+- Gait: Natural human pace (~1.5 m/s), body language matches emotional intensity
+- Expression: Scream maintained (raw authentic emotion, vocal power visible from all angles)
+- Body language: Shoulders engaged, natural physical response to vocalization
+- Wardrobe: Heavy overcoat fabric soaked, draping dramatically, moving with body
+- Overall presence: Raw emotional intensity, authentic physical and vocal expression, powerful presence
 
 ---
 
@@ -114,53 +116,56 @@ Mood: Cinematic contemplation, focused determination, solitary intensity
 **0-2 SEC: EXTREME CLOSE-UP (STEADY START)**
 - Extreme close-up on face (fills frame completely)
 - Rain droplets falling, catching teal light
-- Neutral composed expression visible (focused, no smile, intense)
-- Eyes forward-focused, intense micro-expressions
-- Sound: rain close-miked (intimate, loud)
-- Breathing: visible, natural rhythm
+- Intense natural scream visible (open mouth, raw authentic emotion)
+- Eyes wide, intense, engaged with vocal release
+- Sound: raw natural scream close-miked (intimate power), rain underneath
+- Breath: heavy, natural rhythm from vocalization
 - Teal light: illuminates face (practical + color grade)
 - Camera: absolutely steady (no movement yet)
-- Expression: focused determination (controlled, intense, locked)
-- Detail: eyelashes wet, skin wet, natural human response to rain, rain caught in light
-- Lips: closed with neutral line, no upward curve
-- Jaw: set with focus and intensity
+- Expression: raw emotional scream (authentic, intense, vocal power locked)
+- Detail: eyelashes wet, skin wet, facial muscles engaged, jaw open, teeth visible, natural human intensity
+- Lips: open from scream, pulled back by vocal intensity
+- Jaw: engaged, tense, set with emotional release intensity
+- Neck: visible tension from natural scream effort
 - Collar: Black woollen overcoat visible at frame edge (wet, heavy fabric texture)
 
 **2-5 SEC: ORBIT BEGINS (REVEAL MOTION STARTS)**
 - Camera orbits smoothly around head/shoulders (90° rotation)
 - Rain continues falling (visible as camera angle changes)
-- Neutral composed expression maintained (visible from new angles)
+- Natural scream maintained (visible from new angles, raw emotion held)
 - Body coming into view (shoulders, upper torso, woollen overcoat visible)
 - Teal color palette continues (consistent grading from all angles)
 - Rain on black woollen overcoat visible (heavy wet fabric, water streaming down, new perspective)
 - Woollen texture: visible fabric detail (knit pattern, thick weave, soaked condition)
-- Sound: rain continues, footsteps begin audible
+- Sound: raw scream continues, rain underneath, body tension audible
 - Movement: orbit smooth, no jerks (motorized precision)
-- Hair: wet, matted, realistic gravity maintained as camera circles
-- Profile view: composed focus clearly visible from side angle
-- Overcoat: draping from shoulders, soaked and heavy with rain, wool clings from moisture
+- Hair: wet, matted, realistic gravity maintained as camera circles, moving with body
+- Profile view: natural scream clearly visible from side angle, jaw engaged, vocal intensity
+- Overcoat: draping from shoulders, soaked and heavy with rain, wool clings from moisture, moves with body
 - Material weight: visible heavy fabric response to gravity and water
+- Body language: shoulders engaged, neck tense, natural physical response to vocalization
 - Circular perspective: world rotates around you as center point
 
 **5-10 SEC: ORBIT EXPANDS + PULLS BACK**
 - Camera continues orbiting around you while expanding outward radius
 - Full body now visible (head to feet, woollen overcoat flows dramatically)
-- You present through rain-soaked street
-- Multiple perspectives captured (front, side, back angles as orbit continues)
+- You scream through rain-soaked street
+- Multiple perspectives captured (front, side, back angles as orbit continues, scream visible from all)
 - Urban environment visible (buildings, streetlights, pavement from rotating viewpoint)
 - Rain visible at scale (heavy downpour environment shot from all sides)
 - Teal blue palette: dominant throughout
 - Vertigo subtle: slight warp from circular camera motion (disorienting but controlled)
 - Puddles visible, reflecting teal-lit sky/lights, overcoat hem trailing (perspective shifts with orbit)
 - Traffic: faint timelapse (optional, subtle background)
-- Expression: neutral composed held (visible from various angles as camera orbits)
-- Posture: focused stance, purposeful presence (determined presence visible 360°)
-- Overcoat: long, dramatic, black woollen fabric soaked and flowing with each step (360° perspective)
-- Wool detail: heavy fabric visibly weighted by rain, drapes elegantly despite saturation
-- Sound: rain dominant, footsteps steady, ambient street sounds (spatial audio follows orbit)
-- Final frame: You small-ish in frame, walking into teal-lit rain-soaked Madrid, camera completing orbit
+- Expression: raw natural scream held (visible from various angles as camera orbits)
+- Posture: intense vocalization stance, powerful presence (emotional intensity visible 360°)
+- Body language: shoulders engaged, neck tense, natural physical response to scream from all perspectives
+- Overcoat: long, dramatic, black woollen fabric soaked and flowing with movement (360° perspective)
+- Wool detail: heavy fabric visibly weighted by rain, drapes dramatically with body movement
+- Sound: raw scream dominant, rain underneath, footsteps steady, ambient street sounds (spatial audio follows orbit)
+- Final frame: You small-ish in frame, screaming into teal-lit rain-soaked Madrid, camera completing orbit
 - Depth: visible distance (buildings, street depth from rotating perspective)
-- Mood: solitary, focused intensity, professional determination, dramatic presence from all angles
+- Mood: solitary, raw emotional intensity, powerful vocal presence, dramatic emotional power from all angles
 
 ---
 
@@ -182,22 +187,27 @@ Mood: Cinematic contemplation, focused determination, solitary intensity
 
 ---
 
-[SOUND DESIGN]
-Rain: Intimate close-up (0-2s) → transitioning to environmental (5-10s)
-- Close-miked on face (0-2s): intimate raindrops, breathing
-- Scale transition: rain becomes full environment (5-10s)
+[SOUND DESIGN - NATURAL SCREAM]
+Scream: Raw natural vocalization, dominant throughout (0-10s)
+- Close-miked on face (0-2s): intimate raw scream, vocal intensity
+- Scale transition: scream carries through environment (5-10s)
+- Authentic vocal power continuous throughout
+- Natural emotional release audible from all perspectives
+Rain: Underneath scream, supporting layer
+- Close-miked on face (0-2s): intimate raindrops with scream
+- Scale transition: rain becomes environmental (5-10s)
 - Heavy rain intensity continuous throughout
 Footsteps: Audible from ~3s onward (wet pavement, steady rhythm)
 - Natural squelch/splash on wet concrete
-- Consistent with focused pace
+- Consistent with movement pace and emotional intensity
 Ambient: Madrid night sounds (distant traffic, city hum, occasional voices)
 - Wind gusts moving rain
-- Urban ambient beneath dominant rain
-Breathing: Visible audibly in close-up, steady/composed
-- Natural, controlled rhythm
-Music: Optional ambient underscore (minimal, contemplative)
-Tone: Quiet focus, internal determination, external rain atmosphere
-Dynamics: Wide range (intimate close-up to environmental scale)
+- Urban ambient beneath scream and rain
+Breathing: Heavy, natural from vocalization
+- Raw intensity audible, natural rhythm
+Music: Optional ambient underscore (minimal, supporting scream intensity)
+Tone: Raw emotional power, authentic vocalization, external rain atmosphere
+Dynamics: Wide range (intimate close-up vocal intensity to environmental scale)
 
 ---
 
@@ -259,17 +269,19 @@ Wool character: Fabric darkens when wet, knit pattern visible, professional pres
 
 ---
 
-[PERFORMANCE - ONE CONTINUOUS TAKE]
-- Expression: Neutral, composed throughout (no smile, focused)
-- Mouth: Closed, neutral line (no teeth, no smile, straight)
-- Breath: Natural, visible in close-up (no exertion from movement)
-- Eyes: Forward-focused (maintains intense focus, micro-expressions subtle)
-- Jaw: Set, tense (focused determination)
-- Posture: Focused walk, purposeful stride
-- Walk cycle: Natural human gait (purposeful, determined focus)
-- Expression: Micro-expressions in close-up (focused intensity), composed in wide
-- Continuity: Continuous performance (no resets, one shot)
-- Authenticity: Genuine focused determination, professional intensity, standing power
+[PERFORMANCE - ONE CONTINUOUS TAKE - NATURAL SCREAM]
+- Expression: Raw natural scream throughout (authentic emotion, open mouth, vocal power)
+- Mouth: Open in natural scream (teeth visible, jaw engaged, authentic vocal intensity)
+- Breath: Heavy, natural from vocalization (visible raw intensity)
+- Eyes: Wide, intense (engaged with emotional release, powerful presence)
+- Jaw: Engaged, tense (set with natural scream intensity and release)
+- Neck: Visible tension from natural vocalization
+- Posture: Scream stance, powerful body engagement
+- Walk cycle: Natural human gait (purposeful, emotional intensity expressed through body)
+- Expression: Raw scream throughout (authentic emotional intensity), powerful from all angles
+- Body language: Shoulders engaged, natural physical response to vocalization, visible 360°
+- Continuity: Continuous performance (no resets, one shot, scream held)
+- Authenticity: Genuine raw emotional scream, authentic vocal power, powerful physical presence
 
 ---
 
@@ -291,9 +303,10 @@ Wool character: Fabric darkens when wet, knit pattern visible, professional pres
 🎬 Extreme close-up reveal (intimate to cinematic in one take, all perspectives)
 🎬 Teal blue color palette (moody, stylized, cinematic)
 🎬 Black woollen overcoat (dramatic, premium fabric, flows with movement, rain-soaked, visible 360°)
-🎬 Authentic performance (neutral expression, real focused intensity, composed determination from all angles)
+🎬 Raw natural scream (authentic vocal power, open mouth, emotional intensity from all angles)
+🎬 Natural body expression (shoulders engaged, neck tense, physical response to vocalization)
 🎬 Practical rain (visible, backlit, atmospheric, heavy, surround perspective)
-🎬 Professional intensity (composed, focused, determined in orbit)
+🎬 Emotional power (raw, authentic, powerful vocal intensity in orbit)
 🎬 Cinematic depth (shallow to deep focus reveal with circular perspective)
 
 **COMPARABLE FILMS:**
@@ -304,9 +317,9 @@ Wool character: Fabric darkens when wet, knit pattern visible, professional pres
 ---
 
 [EMOTIONAL ARC - 10 SECONDS]
-0-2s: Focused intensity (composed determination, neutral expression at face-level)
-2-5s: Emergence (body/identity revealed, focus reinforced, woollen overcoat visible)
-5-10s: Solitary determination (full presence in rain-soaked Madrid, focused intensity in professional attire)
+0-2s: Raw emotional release (authentic natural scream, open mouth, vocal power at face-level)
+2-5s: Emergence (body/identity revealed, scream reinforced, woollen overcoat visible, physical intensity)
+5-10s: Solitary emotional power (full presence in rain-soaked Madrid, raw scream intensity in professional attire, powerful from all angles)
 
 **FINAL VISION:**
-Teal-lit extreme close-up on your neutral composed expression in heavy rain → smooth 360° orbit expands and pulls back → reveals you moving through rain-soaked Madrid streets in black woollen overcoat from all perspectives in one continuous, cinematic shot. Single take of genuine focused determination - composed, intense, absolutely cool, circled completely from all angles. Professional intensity and determined power.
+Teal-lit extreme close-up on your raw natural scream in heavy rain → smooth 360° orbit expands and pulls back → reveals you screaming through rain-soaked Madrid streets in black woollen overcoat from all perspectives in one continuous, cinematic shot. Single take of genuine raw emotional power - authentic vocal intensity, powerful, absolutely raw, circled completely from all angles. Emotional intensity and natural screaming power.
