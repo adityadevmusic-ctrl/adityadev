@@ -12,7 +12,7 @@ AESTHETIC: Professional hero protagonist, cool detached confidence, premium ward
 ---
 
 [LOGLINE]
-Evening-lit sleek car in urban setting. You approach in black woollen overcoat with determined confident stride. Smooth camera tracking follows. Door opens revealing interior light. You pivot smoothly, sit into driver's seat in one fluid motion. Hands settle on steering wheel with focused intensity. Camera follows into warm interior lit by teal-graded evening glow. Black overcoat draped dramatically as you sit. 10 seconds of pure professional hero introduction - authentic confidence, determined power, premium presence.
+Evening-lit sleek car in urban setting. **NO DIALOGUE.** You approach in black woollen overcoat with determined confident stride. Smooth camera tracking follows. Door opens revealing interior light. You pivot smoothly, sit into driver's seat in one fluid motion. Hands settle on steering wheel with focused intensity. Camera follows into warm interior lit by teal-graded evening glow. Black overcoat draped dramatically as you sit. 10 seconds of pure professional hero introduction - authentic confidence, determined power, premium presence. Silent, physical confidence throughout.
 
 ---
 
@@ -102,6 +102,8 @@ Interior: Warm glow through teal-blue grade
 
 [SOUND DESIGN]
 
+**NO DIALOGUE - ZERO DIALOGUE THROUGHOUT**
+
 Footsteps: Confident walk on pavement (0-4s)
 Door handle: Smooth mechanical sound (quality vehicle)
 Door opens: Precise, luxury car sound
@@ -109,6 +111,8 @@ Seating: Natural settling sound
 Interior ambient: Subtle cabin sound as door closes effect
 Engine: Off (no starting)
 Optional minimal music: Supporting, not dominating
+
+Note: **NO DIALOGUE** - only physical and mechanical sounds, silent professional confidence
 
 ---
 
@@ -162,7 +166,7 @@ Format: Alexa LF / RED equivalent
 
 [FINAL VISION]
 
-Teal-lit evening establishing of sleek car → smooth camera tracking as you approach in black woollen overcoat with determined stride → hands grip door handle with confident motion → door opens smoothly revealing warm interior light → you pivot and sit in one fluid motion → camera follows into interior → you settle hands on steering wheel with focused intensity → teal-blue hero moment complete with evening warmth transitioning to cool professional interior. Black overcoat draped dramatically throughout. 10 seconds of pure professional cinematic confidence - authentic hero introduction in premium wardrobe, determined power, cool composure, professional intensity through physicality and presence. Hollywood-style hero shot with cinematic precision and visual beauty.
+**NO DIALOGUE** - Teal-lit evening establishing of sleek car → smooth camera tracking as you approach in black woollen overcoat with determined stride → hands grip door handle with confident motion → door opens smoothly revealing warm interior light → you pivot and sit in one fluid motion → camera follows into interior → you settle hands on steering wheel with focused intensity → teal-blue hero moment complete with evening warmth transitioning to cool professional interior. Black overcoat draped dramatically throughout. 10 seconds of pure professional cinematic confidence - authentic hero introduction in premium wardrobe, determined power, cool composure, professional intensity through physicality and presence. Silent communication through movement and presence only. Hollywood-style hero shot with cinematic precision and visual beauty.
 
 ---
 
