@@ -1,40 +1,40 @@
-CINEMATIC HERO SHOT | CAR DOOR OPENING & SITTING | 10 SEC | TEAL BLUE | HOLLYWOOD STYLE
+CINEMATIC HERO SHOT | CAR DOOR OPENING & SITTING | 10 SEC | TEAL BLUE | HOLLYWOOD STYLE | EVENING
 
 [CREATIVE DIRECTION]
 Professional Hollywood-style hero shot - signature character introduction moment
-Dramatic cinematic opening: car door reveals, you sit into driver's seat
-Teal blue color palette (moody, professional, stylized)
+Dramatic cinematic opening: already near car, you approach, pull door handle with determined motion
+Teal blue color palette transitioning with evening light (moody, professional, stylized)
 Real cinematography, authentic human performance
-Camera choreography: wide establishing → close detail → interior reveal
+Camera choreography: medium distance → close detail → interior reveal
 STYLE: Drive meets Blade Runner 2049 meets James Bond opening
-AESTHETIC: Professional hero moment, cool detached confidence, cinematic power
+AESTHETIC: Professional hero moment, cool detached confidence, cinematic power, golden-to-teal transition
 
 ---
 
 [LOGLINE]
-Cinematic hero shot: extreme wide establishing of sleek car at night in teal-lit urban setting. Camera moves as you approach, pull door handle with determined motion. Door opens revealing interior light, you pivot and sit into driver's seat in one smooth motion. Camera follows into interior as you settle at wheel, hands grip steering wheel with focused intensity. Teal-blue grading throughout. Pure cinematic hero introduction - 10 seconds of professional confidence and dramatic presence.
+Cinematic hero shot: evening-lit sleek car in urban setting with teal-graded atmosphere. You approach from medium distance with determined motion. Door opens revealing interior light, you pivot and sit into driver's seat in one smooth motion. Camera follows into interior as you settle at wheel, hands grip steering wheel with focused intensity. Teal-blue grading with warm evening undertones. Pure cinematic hero introduction - 10 seconds of professional confidence and dramatic presence.
 
 ---
 
 [SCENE SETUP]
-**Setting:** Urban night location, sleek car (implied high-end vehicle)
-**Lighting:** Teal-blue cinematic grading, practical street lights visible
-**Weather:** Clear night (optional: wet from recent rain for dramatic reflection)
+**Setting:** Urban evening location, sleek car (implied high-end vehicle)
+**Lighting:** Teal-blue cinematic grading with golden-hour evening warmth
+**Weather:** Clear evening (subtle ambient glow, fading daylight)
 **Mood:** Professional hero moment, focused confidence, cinematic intensity
-**Time of Day:** Night (dramatic shadows, practical lights)
-**Color Palette:** Deep teal, amber street lights visible through teal filter
+**Time of Day:** Evening/dusk (golden hour transitioning to teal, dramatic shadows)
+**Color Palette:** Teal with warm golden undertones, amber evening light filtered through teal
 
 ---
 
 [CAMERA MOVEMENT - ONE CONTINUOUS HERO SHOT]
 
-**0-2 SEC: WIDE ESTABLISHING SHOT**
-- Start: Ultra-wide establishing (15-20 feet from car)
-- Framing: Car dominates frame, urban environment visible
-- Focus: Entire car visible (sleek, professional)
-- Movement: Camera begins slow dolly toward car
-- Lighting: Car lit by teal-graded practical lights
-- Mood: Cinematic introduction, establishing hero moment
+**0-2 SEC: MEDIUM ESTABLISHING**
+- Start: Medium distance establishing (10-12 feet from car)
+- Framing: Car visible, you approaching from frame side
+- Focus: Your body approaching door with determined stride
+- Movement: Camera begins smooth tracking (following your approach)
+- Lighting: Evening light + teal grade (warm-to-cool transition)
+- Mood: Introduction, establishing hero moment
 
 **2-4 SEC: APPROACH & DOOR HANDLE**
 - Movement: Smooth dolly continues toward car
@@ -112,53 +112,58 @@ Cinematic hero shot: extreme wide establishing of sleek car at night in teal-lit
 
 ---
 
-[LIGHTING DESIGN]
+[LIGHTING DESIGN - EVENING TRANSITION]
 
 **Practical Lights:**
-- Streetlights: Warm amber visible through teal filter
+- Evening ambient: Golden hour warmth (fading natural light)
 - Car headlights: Optional, subtle (not distracting)
 - Interior dome light: Warm light spills as door opens
 - Dashboard lighting: Subtle glow from dash (interior reveal)
+- Urban glow: Soft ambient evening light
 
 **Cinematic Lighting:**
-- Key Light: Teal-filtered streetlight (professional)
+- Key Light: Warm evening light filtered through teal (professional)
 - Fill Light: Ambient teal glow (balanced, not flat)
 - Back Light: Subtle rim light (separation from background)
 - Practical glow: Car interior light as door opens
+- Transition: Golden warmth to cool teal as camera moves
 
 **Light Quality:**
-- Hard/Soft Mix: Slightly hard key (dramatic) with soft fill
+- Hard/Soft Mix: Soft evening key (natural) with subtle teal fill
 - Contrast: Professional cinema contrast (visible shadows)
-- Color Temperature: Cool teal dominant with warm accents
-- Motivatable: All lighting appears practical/natural
+- Color Temperature: Warm-to-cool transition (evening to teal)
+- Motivatable: All lighting appears practical/natural/environmental
 
 ---
 
-[COLOR GRADING]
+[COLOR GRADING - EVENING TO TEAL]
 
-**LUT/Grade:** Teal-blue cinematic hero grade
+**LUT/Grade:** Teal-blue cinematic hero grade with evening warmth
 
 **Color Palette:**
 - Primary: Deep teal/cyan (#1a4d5c) - cool, professional
-- Shadows: Dark teal-blue (#0d2a33) - rich, dramatic
+- Warm Undertones: Golden-hour amber visible through teal
+- Shadows: Teal-blue with warmth (#0d2a33) - rich, dramatic
 - Highlights: Bright cyan (#4dd9ff) - crisp, sharp
-- Accent: Warm amber from practical lights visible through teal
+- Accent: Warm amber from evening light and interior glow
 
 **Specific Colors:**
-- Car body: Deep teal-black (sleek, professional)
-- Skin tones: Warm undertone preserved with teal cast
-- Road/Pavement: Teal-reflected wet surface (if present)
-- Street lights: Warm amber glowing through teal filter
+- Car body: Deep teal-black with golden reflection (sleek, professional)
+- Skin tones: Warm undertone preserved with gentle teal cast
+- Evening sky: Teal gradient with golden-hour warmth
+- Street/Pavement: Teal with golden reflection (if present)
 - Interior dashboard: Warm glow through teal-blue
-- Steering wheel: Natural materials with teal cast
+- Steering wheel: Natural materials with teal cast and golden accent
+- Evening ambient: Golden warmth filtered to teal
 
 **Grading Notes:**
 - Not oversaturated (professional, cinematic teal)
 - Maintains contrast (readable shadows, bright highlights)
 - Preserves human warmth in skin tones
 - Cinematic quality (35mm film stock equivalent)
-- Consistent teal throughout (unified professional mood)
+- Consistent teal with warm undertones (unified professional evening mood)
 - Crisp and sharp (professional hero moment)
+- Evening-to-night transition visible in color temperature
 
 ---
 
@@ -211,17 +216,16 @@ Cinematic hero shot: extreme wide establishing of sleek car at night in teal-lit
 [SOUND DESIGN - HERO MOMENT]
 
 **Sound Elements:**
-- Footsteps: Confident walk sound (urban pavement)
+- Footsteps: Confident walk sound (urban evening pavement)
 - Door Handle: Smooth mechanical sound (quality vehicle)
 - Door Opens: Smooth, precise mechanical sound (luxury car)
 - Hinges: Whisper-quiet (high-end vehicle)
 - Interior Light: Subtle ding/chime (optional)
 - Seating: Leather creaking (quality seats)
-- Settling: Seatbelt click (optional, subtle)
 
 **Engine/Mechanical:**
 - Engine: Off (not starting, waiting for next moment)
-- Ambient: Urban night ambience (distant traffic, quiet)
+- Ambient: Urban evening ambience (distant traffic, quiet, birds settling)
 - Practical Sounds: All realistic, no exaggeration
 
 **Music/Underscore:**
@@ -241,10 +245,10 @@ Cinematic hero shot: extreme wide establishing of sleek car at night in teal-lit
 
 [MOOD & ATMOSPHERE]
 
-**Overall Tone:** Professional hero introduction
-**Visual Mood:** Cinematic confidence, focused intensity
-**Emotional Resonance:** Undeniable presence, cool confidence
-**Aesthetic:** Hollywood blockbuster opening, professional hero moment
+**Overall Tone:** Professional hero introduction at golden hour
+**Visual Mood:** Cinematic confidence, focused intensity, evening warmth transitioning to cool
+**Emotional Resonance:** Undeniable presence, cool confidence, hero moment
+**Aesthetic:** Hollywood blockbuster opening, professional hero moment, evening cinematic
 **Comparable Style:** Drive opening, Blade Runner 2049 hero moments, James Bond car scenes
 
 ---
@@ -258,25 +262,26 @@ Cinematic hero shot: extreme wide establishing of sleek car at night in teal-lit
 - Professional support (smooth, no vibration)
 
 **Lighting Equipment:**
-- Teal-filtered practical lighting (if on controlled set)
+- Evening ambient light (natural or enhanced golden-hour glow)
+- Teal-filtered lighting (if on controlled set)
 - Car interior lighting (natural or enhanced)
 - Optional fill lighting (balanced, subtle)
 - Color consistency (DCI P3 cinema color)
 
 **Post-Production:**
-- Teal-blue LUT applied (DCI P3)
-- Professional color grading (cinema quality)
+- Teal-blue LUT applied with evening warmth (DCI P3)
+- Professional color grading (cinema quality, warm-to-cool transition)
 - Sound design and mixing
 - Final delivery: 4K 24fps cinema format
 
 ---
 
 [VISUAL CONTINUITY]
-✅ Teal color consistent throughout (no shifts)
+✅ Teal color consistent throughout (with evening warmth blend)
 ✅ Confident energy maintained (hero presence held)
 ✅ Smooth camera motion (no jitter, professional)
 ✅ Focused expression consistent (determined look held)
-✅ Lighting consistent (teal-graded throughout)
+✅ Lighting consistent (evening-to-teal graded throughout)
 ✅ Movement quality constant (professional execution)
 ✅ Professional tone maintained (hero moment throughout)
 ✅ Seamless transitions (exterior to interior smooth)
@@ -284,10 +289,10 @@ Cinematic hero shot: extreme wide establishing of sleek car at night in teal-lit
 ---
 
 [SIGNATURE ELEMENTS]
-🎬 Hollywood hero shot (professional introduction moment)
+🎬 Hollywood hero shot (professional introduction moment, evening setting)
 🎬 Smooth continuous camera movement (no cuts, one take feel)
 🎬 Determined confident action (purposeful, controlled)
-🎬 Teal blue color palette (moody, professional, stylized)
+🎬 Teal blue color palette with evening warmth (moody, professional, stylized)
 🎬 Sleek car reveal (practical, cinematic framing)
 🎬 Fluid sitting motion (athletic, practiced, smooth)
 🎬 Professional cinematography (steady, sharp, cinematic)
@@ -304,7 +309,7 @@ Cinematic hero shot: extreme wide establishing of sleek car at night in teal-lit
 ---
 
 [EMOTIONAL ARC - 10 SECONDS]
-0-2s: Hero introduction (establishing presence, confident entrance)
+0-2s: Hero introduction (approaching with presence, evening glow)
 2-4s: Determined approach (focused action, purposeful movement)
 4-6s: Fluid execution (smooth sitting, athletic precision)
 6-10s: Settled focus (at wheel, ready for action, hero moment locked)
@@ -312,7 +317,7 @@ Cinematic hero shot: extreme wide establishing of sleek car at night in teal-lit
 ---
 
 [FINAL VISION]
-Teal-lit ultra-wide cinematic establishing shot of sleek car in urban night → smooth camera dolly toward you approaching with determined stride → hands grip door handle with confident motion → door opens smoothly revealing interior light → you pivot and sit in one fluid athletic motion → camera follows into interior as you settle hands on steering wheel with focused intensity → teal-blue graded hero moment complete. 10 seconds of pure professional cinematic confidence - authentic hero introduction, determined power, cool composure. Hollywood-style hero shot captured with precision and cinematic beauty.
+Teal-lit medium establishing shot of sleek car in evening urban setting → smooth camera tracking as you approach with determined stride → hands grip door handle with confident motion → door opens smoothly revealing interior light with evening warmth → you pivot and sit in one fluid athletic motion → camera follows into interior as you settle hands on steering wheel with focused intensity → teal-blue graded hero moment complete with evening glow transitioning to cool interior. 10 seconds of pure professional cinematic confidence - authentic hero introduction, determined power, cool composure. Hollywood-style hero shot captured with precision and cinematic beauty.
 
 ---
 
