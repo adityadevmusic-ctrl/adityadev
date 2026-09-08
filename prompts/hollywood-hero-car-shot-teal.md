@@ -198,18 +198,30 @@ Cinematic hero shot: evening-lit sleek car in urban setting with teal-graded atm
 
 [WARDROBE & STYLING]
 
-**Clothing:** Professional, stylish, modern
-- Type: Contemporary casual/smart wear (dark tones)
-- Fit: Tailored, confident (not loose, not too tight)
-- Color: Dark tones (black, charcoal, navy) - hero aesthetic
-- Details: Quality visible, professional appearance
-- Mood: Cool, confident, contemporary
+**Clothing:** Black woollen overcoat - professional, stylish, iconic
+- Type: **Black woollen overcoat** (premium fabric, dramatic presence)
+- Fit: Tailored, confident (structured, elegant, timeless)
+- Fabric: Heavy wool or premium wool-blend (visible quality, professional prestige)
+- Color: Deep black, teal-graded for cinematic effect
+- Details: Collar visible in close-up, hem visible in wide shots, quality visible throughout
+- Mood: Cool, confident, contemporary, hero aesthetic
+- Movement: Flows and drapes with purposeful movement, adds visual drama
+- Presence: Premium wardrobe establishes professional confidence immediately
+
+**Layering Under Overcoat:**
+- Base: Dark smart wear visible at neck/collar area (professional underneath)
+- Hands: Visible gripping wheel, quality visible in hand detail
 
 **Accessories:**
 - Watch: Optional subtle (visible on wrist during sit)
 - Rings/Jewelry: Minimal, quality (if present)
 - Hair: Styled, natural, professional
-- Overall: Polished but not overdone
+- Overall: Black overcoat polished, professional, hero-ready - overcoat is statement piece
+
+**Wardrobe Continuity:**
+- Overcoat visible from approach through car interior
+- Maintained throughout 10-second shot
+- Professional intensity expressed through premium fabric choice
 
 ---
 
@@ -290,13 +302,14 @@ Cinematic hero shot: evening-lit sleek car in urban setting with teal-graded atm
 
 [SIGNATURE ELEMENTS]
 🎬 Hollywood hero shot (professional introduction moment, evening setting)
+🎬 **Black woollen overcoat** (premium fabric, dramatic hero presence)
 🎬 Smooth continuous camera movement (no cuts, one take feel)
 🎬 Determined confident action (purposeful, controlled)
 🎬 Teal blue color palette with evening warmth (moody, professional, stylized)
 🎬 Sleek car reveal (practical, cinematic framing)
 🎬 Fluid sitting motion (athletic, practiced, smooth)
 🎬 Professional cinematography (steady, sharp, cinematic)
-🎬 Hero presence (confident, focused, powerful)
+🎬 Hero presence (confident, focused, powerful, established through wardrobe)
 🎬 Practical sound design (realistic mechanical detail)
 🎬 Cinematic lighting (professional, motivated, beautiful)
 
@@ -317,7 +330,7 @@ Cinematic hero shot: evening-lit sleek car in urban setting with teal-graded atm
 ---
 
 [FINAL VISION]
-Teal-lit medium establishing shot of sleek car in evening urban setting → smooth camera tracking as you approach with determined stride → hands grip door handle with confident motion → door opens smoothly revealing interior light with evening warmth → you pivot and sit in one fluid athletic motion → camera follows into interior as you settle hands on steering wheel with focused intensity → teal-blue graded hero moment complete with evening glow transitioning to cool interior. 10 seconds of pure professional cinematic confidence - authentic hero introduction, determined power, cool composure. Hollywood-style hero shot captured with precision and cinematic beauty.
+Teal-lit medium establishing shot of sleek car in evening urban setting → **you approach in black woollen overcoat** with determined stride → smooth camera tracking follows your purposeful movement → hands grip door handle with confident motion (overcoat visible) → door opens smoothly revealing interior light with evening warmth → you pivot and sit in one fluid athletic motion (overcoat drapes dramatically) → camera follows into interior as you settle hands on steering wheel with focused intensity → teal-blue graded hero moment complete with evening glow transitioning to cool interior, black overcoat establishing professional hero presence. 10 seconds of pure professional cinematic confidence - authentic hero introduction in premium wardrobe, determined power, cool composure. Hollywood-style hero shot captured with precision and cinematic beauty. Black woollen overcoat as signature wardrobe element expressing hero protagonist energy.
 
 ---
 
