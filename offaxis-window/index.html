@@ -1,0 +1,533 @@
+<meta charset="utf-8">
+<title>Off-Axis Window</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Oswald:wght@500;600&display=swap">
+<style>
+/* Layout: full-bleed WebGL "window" with two quiet HUD corners (telemetry left, controls right). Single dark look by choice. */
+:root {
+  --void: #070708;
+  --ink: #e9e6e1;
+  --dim: #8f8a84;
+  --panel: rgba(12, 12, 13, 0.72);
+  --line: rgba(233, 230, 225, 0.14);
+  --signal: #e2262e;
+  --ok: #5fd08a;
+  --font-display: "Oswald", "Arial Narrow", Impact, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  margin: 0; overflow: hidden; background: var(--void); color: var(--ink);
+  font-family: var(--font-mono); font-size: 12px;
+}
+#stage { position: fixed; inset: 0; display: block; width: 100%; height: 100%; touch-action: none; }
+.grain, .vignette { position: fixed; inset: 0; pointer-events: none; }
+.vignette { background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%); }
+.grain { opacity: 0.08; mix-blend-mode: overlay; }
+
+.hud {
+  position: fixed; display: flex; flex-direction: column; gap: 8px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+  padding: 10px 12px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  max-width: calc(100vw - 32px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+}
+.brand {
+  top: calc(16px + env(safe-area-inset-top, 0px)); left: max(16px, env(safe-area-inset-left, 0px));
+  background: none; border: none; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 0; gap: 2px;
+}
+.brand h1 {
+  margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 22px;
+  letter-spacing: 0.06em; text-transform: uppercase; line-height: 1;
+}
+.brand h1 span { color: var(--signal); }
+.brand p { margin: 0; color: var(--dim); font-size: 11px; letter-spacing: 0.04em; }
+
+.telemetry { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); left: max(16px, env(safe-area-inset-left, 0px)); min-width: 220px; }
+.telemetry header, .controls header {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim);
+}
+.chip { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); letter-spacing: 0.08em; }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dim); }
+.chip[data-state="live"]::before { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+.chip[data-state="pointer"]::before { background: var(--signal); }
+table { border-collapse: collapse; font-variant-numeric: tabular-nums; }
+td { padding: 1px 0; }
+td:first-child { color: var(--dim); padding-right: 18px; }
+td:last-child { text-align: right; min-width: 64px; }
+.bar { display: inline-block; height: 8px; background: rgba(233,230,225,0.75); vertical-align: middle; margin-left: 6px; }
+
+.controls { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); width: 240px; }
+.row { display: flex; gap: 8px; }
+button {
+  flex: 1; font: inherit; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 4px;
+  padding: 8px 10px; cursor: pointer;
+}
+button:hover { border-color: var(--ink); }
+button.primary { background: var(--signal); border-color: var(--signal); color: #fff; }
+button.primary:hover { filter: brightness(1.12); }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+label { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--dim); }
+input[type="range"] { flex: 1; accent-color: var(--signal); max-width: 130px; }
+input[type="checkbox"] { accent-color: var(--signal); }
+#msg { color: var(--dim); line-height: 1.45; font-size: 11px; }
+#msg:empty { display: none; }
+#msg.warn { color: #f0b3b5; }
+
+@media (max-width: 620px) {
+  .telemetry { bottom: auto; top: calc(64px + env(safe-area-inset-top, 0px)); min-width: 0; padding: 8px 10px; }
+  .telemetry tr.extra { display: none; }
+  .controls { width: auto; left: max(16px, env(safe-area-inset-left, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) { .grain { display: none; } }
+</style>
+
+<canvas id="stage" aria-label="3D window into a concrete room with a mechanical head that follows your viewpoint"></canvas>
+<div class="vignette"></div>
+<div class="grain" id="grain"></div>
+
+<div class="hud brand">
+  <h1>Off-Axis <span>Window</span></h1>
+  <p>head-coupled perspective · virtual shadow</p>
+</div>
+
+<section class="hud telemetry" aria-label="Tracking telemetry">
+  <header><span>Tracker</span><span class="chip" id="mode" data-state="pointer">pointer</span></header>
+  <table>
+    <tbody>
+      <tr><td>face_found</td><td id="t-found">0</td></tr>
+      <tr><td>f_score</td><td id="t-score">0.000</td></tr>
+      <tr class="extra"><td>fd_roll</td><td id="t-roll">0.000</td></tr>
+      <tr class="extra"><td>fd_yaw</td><td id="t-yaw">0.000</td></tr>
+      <tr class="extra"><td>eye_left_tx</td><td id="t-elx">0.000</td></tr>
+      <tr class="extra"><td>eye_right_tx</td><td id="t-erx">0.000</td></tr>
+      <tr><td>head_tx</td><td id="t-hx">0.000</td></tr>
+      <tr><td>head_ty</td><td id="t-hy">0.000</td></tr>
+      <tr><td>head_tz</td><td id="t-hz">0.000</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="hud controls" aria-label="Controls">
+  <header><span>Viewpoint</span><span id="fps">— fps</span></header>
+  <div class="row">
+    <button class="primary" id="btn-cam" type="button">Use webcam</button>
+    <button id="btn-center" type="button">Recenter</button>
+  </div>
+  <label for="depth">Parallax <input id="depth" type="range" min="0.4" max="2" step="0.05" value="1"></label>
+  <label for="grid">Depth grid <input id="grid" type="checkbox"></label>
+  <div id="msg">Move the pointer (or drag) to shift your eye. Scroll to move closer.</div>
+</section>
+
+<video id="cam" playsinline muted hidden></video>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (id) => document.getElementById(id);
+
+/* ---------- renderer ---------- */
+const canvas = $('stage');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x050506);
+scene.fog = new THREE.Fog(0x050506, 2.2, 4.2);
+const camera = new THREE.PerspectiveCamera(50, 1, 0.05, 20);
+camera.matrixAutoUpdate = true;
+
+/* Screen = window. Height is 1 unit; width = aspect. Room extends behind the glass. */
+const H = 1, DEPTH = 1.7;
+let W = 1;
+
+/* ---------- procedural textures ---------- */
+function noiseCanvas(size, base, spread, blotches, dark = true, streaks = 0, tint = [1, 0.99, 0.97]) {
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d');
+  const img = g.createImageData(size, size);
+  for (let i = 0; i < img.data.length; i += 4) {
+    const v = base + (Math.random() - 0.5) * spread;
+    img.data[i] = v * tint[0]; img.data[i + 1] = v * tint[1]; img.data[i + 2] = v * tint[2]; img.data[i + 3] = 255;
+  }
+  g.putImageData(img, 0, 0);
+  for (let k = 0; k < blotches; k++) {
+    const x = Math.random() * size, y = Math.random() * size, r = 8 + Math.random() * size * 0.18;
+    const gr = g.createRadialGradient(x, y, 0, x, y, r);
+    const tone = dark || Math.random() < 0.6 ? '0,0,0' : '255,255,255';
+    gr.addColorStop(0, `rgba(${tone},${0.05 + Math.random() * 0.18})`);
+    gr.addColorStop(1, `rgba(${tone},0)`);
+    g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  for (let s = 0; s < streaks; s++) {
+    g.strokeStyle = `rgba(18,18,20,${0.05 + Math.random() * 0.12})`;
+    g.lineWidth = 1 + Math.random() * 3;
+    const x = Math.random() * size; g.beginPath(); g.moveTo(x, Math.random() * size * 0.5);
+    g.lineTo(x + (Math.random() - 0.5) * 6, size * (0.5 + Math.random() * 0.5)); g.stroke();
+  }
+  return c;
+}
+function tex(canvas, rx = 1, ry = 1, color = true) {
+  const t = new THREE.CanvasTexture(canvas);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rx, ry);
+  if (color) t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 4;
+  return t;
+}
+const concreteCanvas = noiseCanvas(512, 120, 90, 140, false);
+const grimeCanvas = noiseCanvas(512, 222, 26, 70, true, 25, [1, 1, 1.01]);
+
+/* ---------- room (rebuilt on resize) ---------- */
+const room = new THREE.Group(); scene.add(room);
+const gridGroup = new THREE.Group(); scene.add(gridGroup); gridGroup.visible = false;
+const wallMat = () => {
+  const t = tex(concreteCanvas, 2, 2);
+  return new THREE.MeshStandardMaterial({ color: 0x5c5957, map: t, roughness: 0.96, bumpMap: tex(concreteCanvas, 2, 2, false), bumpScale: 0.006 });
+};
+let feedPlane;
+function buildRoom() {
+  room.clear(); gridGroup.clear();
+  const mk = (w, h, pos, rot) => {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), wallMat());
+    m.position.copy(pos); m.rotation.set(...rot); m.receiveShadow = true; room.add(m);
+  };
+  mk(W, H, new THREE.Vector3(0, 0, -DEPTH), [0, 0, 0]);                            // back
+  mk(W, DEPTH, new THREE.Vector3(0, -H / 2, -DEPTH / 2), [-Math.PI / 2, 0, 0]);    // floor
+  mk(W, DEPTH, new THREE.Vector3(0, H / 2, -DEPTH / 2), [Math.PI / 2, 0, 0]);      // ceiling
+  mk(DEPTH, H, new THREE.Vector3(-W / 2, 0, -DEPTH / 2), [0, Math.PI / 2, 0]);     // left
+  mk(DEPTH, H, new THREE.Vector3(W / 2, 0, -DEPTH / 2), [0, -Math.PI / 2, 0]);     // right
+
+  // depth grid (classic head-tracking calibration aid)
+  const pts = [], step = 0.1;
+  for (let z = 0; z >= -DEPTH - 1e-6; z -= step) {
+    pts.push(-W/2, -H/2, z,  W/2, -H/2, z,   W/2, -H/2, z,  W/2, H/2, z,
+              W/2, H/2, z,  -W/2, H/2, z,   -W/2, H/2, z, -W/2, -H/2, z);
+  }
+  for (let x = -W / 2; x <= W / 2 + 1e-6; x += step) pts.push(x, -H/2, 0, x, -H/2, -DEPTH, x, H/2, 0, x, H/2, -DEPTH, x, -H/2, -DEPTH, x, H/2, -DEPTH);
+  for (let y = -H / 2; y <= H / 2 + 1e-6; y += step) pts.push(-W/2, y, 0, -W/2, y, -DEPTH, W/2, y, 0, W/2, y, -DEPTH, -W/2, y, -DEPTH, W/2, y, -DEPTH);
+  const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+  gridGroup.add(new THREE.LineSegments(gg, new THREE.LineBasicMaterial({ color: 0xe2262e, transparent: true, opacity: 0.35 })));
+
+  // monitor feed panel on the back wall (webcam or "no signal")
+  feedPlane = new THREE.Mesh(new THREE.PlaneGeometry(0.34, 0.24), new THREE.MeshBasicMaterial({ map: feedTexture(), toneMapped: false }));
+  feedPlane.position.set(-W / 2 + Math.min(0.32, W * 0.3), 0.24, -DEPTH + 0.005);
+  feedPlane.scale.setScalar(Math.min(1, W * 0.9));
+  room.add(feedPlane);
+}
+
+/* "No signal" static for the wall panel until the webcam is live */
+const staticCanvas = document.createElement('canvas'); staticCanvas.width = 160; staticCanvas.height = 112;
+const staticTex = new THREE.CanvasTexture(staticCanvas); staticTex.colorSpace = THREE.SRGBColorSpace;
+let videoTex = null;
+const feedTexture = () => videoTex || staticTex;
+function drawStatic() {
+  const g = staticCanvas.getContext('2d'), w = staticCanvas.width, h = staticCanvas.height;
+  const img = g.createImageData(w, h);
+  for (let i = 0; i < img.data.length; i += 4) { const v = Math.random() * 70; img.data[i] = v + 20; img.data[i+1] = v * 0.6; img.data[i+2] = v * 0.4; img.data[i+3] = 255; }
+  g.putImageData(img, 0, 0);
+  g.fillStyle = 'rgba(226,38,46,0.9)'; g.font = '600 14px monospace'; g.textAlign = 'center';
+  g.fillText('NO SIGNAL', w / 2, h / 2 + 5);
+  staticTex.needsUpdate = true;
+}
+
+/* ---------- the mech (original design, built from primitives) ---------- */
+const M = {
+  steel: new THREE.MeshStandardMaterial({ color: 0x8a8784, metalness: 0.85, roughness: 0.42, map: tex(grimeCanvas), roughnessMap: tex(grimeCanvas, 1, 1, false) }),
+  dark: new THREE.MeshStandardMaterial({ color: 0x232325, metalness: 0.7, roughness: 0.55, map: tex(grimeCanvas) }),
+  paint: new THREE.MeshStandardMaterial({ color: 0xd8d4cc, metalness: 0.2, roughness: 0.6, map: tex(grimeCanvas) }),
+  red: new THREE.MeshStandardMaterial({ color: 0xb3141b, metalness: 0.3, roughness: 0.5, map: tex(grimeCanvas) }),
+  tooth: new THREE.MeshStandardMaterial({ color: 0xbdb6aa, metalness: 0.6, roughness: 0.35 }),
+  lens: new THREE.MeshStandardMaterial({ color: 0x220304, emissive: 0xff2a1a, emissiveIntensity: 2.2, roughness: 0.15, toneMapped: false }),
+  pupil: new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.2, metalness: 0.4 }),
+  glass: new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.02, transmission: 0.2, transparent: true, opacity: 0.25, clearcoat: 1 }),
+};
+function part(geo, mat, pos, rot = [0, 0, 0], parent) {
+  const m = new THREE.Mesh(geo, mat); m.position.set(...pos); m.rotation.set(...rot);
+  m.castShadow = true; m.receiveShadow = true; parent.add(m); return m;
+}
+const box = (x, y, z) => new THREE.BoxGeometry(x, y, z);
+const cyl = (r, h, s = 20) => new THREE.CylinderGeometry(r, r, h, s);
+
+const mech = new THREE.Group(); scene.add(mech);
+// body / collar
+part(box(0.52, 0.22, 0.3), M.dark, [0, 0.11, 0], [0, 0, 0], mech);
+for (let i = 0; i < 5; i++) part(box(0.5, 0.018, 0.31), M.steel, [0, 0.04 + i * 0.04, 0.005], [0, 0, 0], mech);
+for (const s of [-1, 1]) {
+  const pad = new THREE.Group(); pad.position.set(s * 0.37, 0.16, 0.02); pad.rotation.set(0.1, s * -0.15, s * -0.42); mech.add(pad);
+  part(box(0.36, 0.07, 0.36), M.steel, [0, 0, 0], [0, 0, 0], pad);
+  part(box(0.3, 0.075, 0.08), M.red, [s * 0.02, 0.003, 0.11], [0, 0, 0], pad);
+  part(box(0.2, 0.05, 0.3), M.paint, [s * -0.05, 0.05, -0.01], [0, 0, 0], pad);
+  for (let k = 0; k < 3; k++) part(cyl(0.012, 0.02, 10), M.dark, [s * (-0.1 + k * 0.06), 0.04, 0.15], [0, 0, 0], pad);
+}
+// neck: spine rings, pistons, cables
+const neck = new THREE.Group(); neck.position.set(0, 0.22, 0); mech.add(neck);
+part(cyl(0.05, 0.24), M.dark, [0, 0.12, -0.02], [0, 0, 0], neck);
+for (let i = 0; i < 6; i++) part(new THREE.TorusGeometry(0.058, 0.012, 8, 20), M.steel, [0, 0.03 + i * 0.038, -0.02], [Math.PI / 2, 0, 0], neck);
+for (const x of [-0.11, 0.11]) {
+  part(cyl(0.018, 0.16), M.steel, [x, 0.08, 0.03], [0, 0, x > 0 ? -0.25 : 0.25], neck);
+  part(cyl(0.011, 0.14), M.tooth, [x * 0.82, 0.19, 0.03], [0, 0, x > 0 ? -0.25 : 0.25], neck);
+}
+const cable = (pts, r, mat) => part(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map(p => new THREE.Vector3(...p))), 30, r, 8), mat, [0, 0, 0], [0, 0, 0], mech);
+cable([[-0.16, 0.2, 0.08], [-0.2, 0.3, 0.12], [-0.08, 0.42, 0.1]], 0.014, M.paint);
+cable([[0.14, 0.2, 0.1], [0.19, 0.32, 0.11], [0.07, 0.43, 0.09]], 0.012, M.red);
+cable([[-0.06, 0.2, 0.14], [-0.02, 0.3, 0.17], [0.0, 0.41, 0.12]], 0.01, M.dark);
+
+// head (pivot at top of neck)
+const head = new THREE.Group(); head.position.set(0, 0.44, 0); head.rotation.order = 'YXZ'; mech.add(head);
+// sculpted shells: a side profile (z, y) extruded across the head's width
+function profile(pts, width, bevel = 0.012) {
+  const sh = new THREE.Shape(pts.map(([z, y]) => new THREE.Vector2(z, y)));
+  const g = new THREE.ExtrudeGeometry(sh, { depth: width, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel, bevelSegments: 2, curveSegments: 4 });
+  g.rotateY(-Math.PI / 2); g.translate(width / 2, 0, 0); g.computeVertexNormals();
+  return g;
+}
+part(profile([[-0.24, 0.02], [-0.26, 0.2], [-0.12, 0.33], [0.08, 0.36], [0.34, 0.235], [0.3, 0.2], [0.16, 0.215], [0.12, 0.12], [-0.05, 0.05]], 0.38), M.steel, [0, 0, 0], [0, 0, 0], head);
+part(profile([[-0.2, 0.3], [0.05, 0.43], [0.31, 0.262], [0.06, 0.35]], 0.075), M.paint, [0, 0, 0], [0, 0, 0], head);   // centre blade
+part(box(0.082, 0.016, 0.29), M.red, [0, 0.352, 0.18], [0.54, 0, 0], head);                    // blade stripe
+for (const s of [-1, 1]) part(profile([[0.0, 0.3], [0.28, 0.225], [0.2, 0.25]], 0.05, 0.006), M.red, [s * 0.15, 0.012, 0], [0, 0, 0], head); // brow flashes
+for (const s of [-1, 1]) {
+  part(box(0.05, 0.2, 0.3), M.steel, [s * 0.205, 0.08, 0.05], [0, s * -0.35, s * 0.12], head); // cheek plate
+  part(box(0.052, 0.04, 0.2), M.red, [s * 0.215, 0.02, 0.05], [0, s * -0.35, s * 0.12], head);
+  part(cyl(0.035, 0.04), M.dark, [s * 0.2, 0.0, -0.08], [0, 0, Math.PI / 2], head);           // jaw hinge
+}
+part(box(0.3, 0.16, 0.05), M.dark, [0, 0.1, 0.19], [0, 0, 0], head);                            // face recess
+part(box(0.22, 0.05, 0.16), M.steel, [0, -0.005, 0.19], [0, 0, 0], head);                       // upper snout
+
+// eyes: asymmetric lens clusters
+const eyes = [];
+for (const [x, y, z, r] of [[-0.1, 0.14, 0.225, 0.032], [-0.145, 0.07, 0.215, 0.026], [-0.075, 0.055, 0.23, 0.02],
+                            [0.1, 0.14, 0.225, 0.032], [0.145, 0.07, 0.215, 0.026], [0.06, 0.18, 0.22, 0.016]]) {
+  const e = new THREE.Group(); e.position.set(x, y, z); head.add(e);
+  part(cyl(r * 1.25, 0.05), M.steel, [0, 0, 0], [Math.PI / 2, 0, 0], e);
+  part(new THREE.TorusGeometry(r * 1.08, r * 0.18, 8, 24), M.steel, [0, 0, 0.026], [0, 0, 0], e);
+  part(new THREE.CircleGeometry(r * 0.95, 24), M.lens, [0, 0, 0.0255], [0, 0, 0], e);
+  const pupil = part(new THREE.CircleGeometry(r * 0.32, 20), M.pupil, [0, 0, 0.027], [0, 0, 0], e);
+  part(new THREE.SphereGeometry(r * 0.9, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2), M.glass, [0, 0, 0.022], [Math.PI / 2, 0, 0], e);
+  eyes.push({ group: e, pupil });
+}
+// upper teeth
+for (let i = 0; i < 11; i++) part(box(0.011, 0.04, 0.012), M.tooth, [-0.09 + i * 0.018, -0.045, 0.26], [0, 0, 0], head);
+for (const s of [-1, 1]) for (let i = 0; i < 5; i++) part(box(0.012, 0.035, 0.011), M.tooth, [s * 0.1, -0.043, 0.24 - i * 0.022], [0, 0, 0], head);
+// jaw
+const jaw = new THREE.Group(); jaw.position.set(0, -0.01, -0.06); head.add(jaw);
+part(box(0.24, 0.045, 0.3), M.steel, [0, -0.07, 0.17], [0, 0, 0], jaw);
+part(box(0.2, 0.02, 0.06), M.red, [0, -0.09, 0.3], [0, 0, 0], jaw);
+for (let i = 0; i < 11; i++) part(box(0.011, 0.038, 0.012), M.tooth, [-0.09 + i * 0.018, -0.03, 0.31], [0, 0, 0], jaw);
+for (const s of [-1, 1]) {
+  for (let i = 0; i < 5; i++) part(box(0.012, 0.034, 0.011), M.tooth, [s * 0.1, -0.032, 0.29 - i * 0.022], [0, 0, 0], jaw);
+  part(cyl(0.01, 0.12), M.tooth, [s * 0.125, -0.02, 0.06], [0.9, 0, 0], jaw);                // jaw piston
+}
+const mouthGlow = new THREE.PointLight(0xff3020, 0.0, 0.5, 2); mouthGlow.position.set(0, -0.04, 0.2); head.add(mouthGlow);
+const eyeGlow = new THREE.PointLight(0xff2a1a, 0.6, 0.45, 2); eyeGlow.position.set(0, 0.12, 0.34); head.add(eyeGlow);
+
+/* ---------- lights: key spot casts the "virtual shadow" onto the box ---------- */
+scene.add(new THREE.HemisphereLight(0x9fa8b8, 0x101012, 0.3));
+const key = new THREE.SpotLight(0xfff0e0, 30, 6, 0.62, 0.55, 1.6);
+key.position.set(-0.55, 0.62, 0.75);
+key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
+key.shadow.bias = -0.0004; key.shadow.normalBias = 0.015; key.shadow.camera.near = 0.2; key.shadow.camera.far = 5;
+scene.add(key, key.target);
+const rim = new THREE.SpotLight(0xff3434, 7, 3, 0.35, 0.7, 1.5);
+rim.position.set(0.45, 0.48, -1.55); scene.add(rim, rim.target);
+
+/* ---------- layout on resize ---------- */
+function layout() {
+  const w = innerWidth, h = innerHeight;
+  renderer.setSize(w, h, false);
+  W = (w / h) * H;
+  buildRoom();
+  const s = Math.min(1, W * 1.05);
+  mech.scale.setScalar(s);
+  mech.position.set(W > 1 ? W * 0.1 : 0, -H / 2, -0.95);
+  key.target.position.set(mech.position.x, -0.05, mech.position.z);
+  rim.target.position.set(mech.position.x, 0.05, mech.position.z);
+}
+addEventListener('resize', layout);
+
+/* ---------- viewpoint input ---------- */
+const eye = new THREE.Vector3(0, 0, 1.7);      // smoothed eye position (screen-height units)
+const target = new THREE.Vector3(0, 0, 1.7);
+let parallax = 1, mode = 'pointer', lastInput = -1e9, distZ = 1.7;
+const centerOffset = new THREE.Vector2();
+
+function onPointer(e) {
+  if (mode !== 'pointer') return;
+  const nx = e.clientX / innerWidth * 2 - 1, ny = -(e.clientY / innerHeight * 2 - 1);
+  target.set(nx * W * 0.75, ny * 0.55, distZ);
+  lastInput = performance.now();
+}
+canvas.addEventListener('pointermove', onPointer);
+canvas.addEventListener('pointerdown', onPointer);
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  distZ = THREE.MathUtils.clamp(distZ * (1 + e.deltaY * 0.001), 0.8, 3.2);
+  if (mode === 'pointer') { target.z = distZ; lastInput = performance.now(); }
+}, { passive: false });
+
+$('depth').addEventListener('input', (e) => { parallax = +e.target.value; });
+$('grid').addEventListener('change', (e) => { gridGroup.visible = e.target.checked; });
+$('btn-center').addEventListener('click', () => {
+  if (mode === 'face') { centerOffset.set(rawHead.x, rawHead.y); setMsg('Recentered on your current head position.'); }
+  else { target.set(0, 0, 1.7); distZ = 1.7; lastInput = performance.now(); }
+});
+function setMsg(t, warn = false) { const m = $('msg'); m.textContent = t; m.classList.toggle('warn', warn); }
+
+/* ---------- webcam face tracking (MediaPipe) ---------- */
+const MP = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14';
+const MODEL = 'https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite';
+const video = $('cam');
+let detector = null, rawHead = new THREE.Vector3(), lastVideoTime = -1;
+const tele = { found: 0, score: 0, roll: 0, yaw: 0, elx: 0, erx: 0 };
+
+$('btn-cam').addEventListener('click', async () => {
+  if (mode === 'face') return stopCam();
+  setMsg('Starting camera…');
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480, facingMode: 'user' }, audio: false });
+  } catch (err) {
+    setMsg('Camera is blocked here. Open this page from its own file (python3 -m http.server, then localhost) in Chrome to use head tracking. Pointer mode still works.', true);
+    return;
+  }
+  try {
+    video.srcObject = stream; await video.play();
+    setMsg('Loading face tracker…');
+    const vision = await import(`${MP}/vision_bundle.mjs`);
+    const files = await vision.FilesetResolver.forVisionTasks(`${MP}/wasm`);
+    detector = await vision.FaceDetector.createFromOptions(files, {
+      baseOptions: { modelAssetPath: MODEL, delegate: 'GPU' }, runningMode: 'VIDEO', minDetectionConfidence: 0.5,
+    });
+  } catch (err) {
+    stream.getTracks().forEach(t => t.stop());
+    setMsg('The face tracker could not load (network blocked?). Pointer mode still works.', true);
+    return;
+  }
+  videoTex = new THREE.VideoTexture(video); videoTex.colorSpace = THREE.SRGBColorSpace;
+  videoTex.wrapS = THREE.RepeatWrapping; videoTex.repeat.x = -1;   // mirror like a selfie view
+  feedPlane.material.map = videoTex; feedPlane.material.needsUpdate = true;
+  mode = 'face'; $('mode').dataset.state = 'live'; $('mode').textContent = 'face';
+  $('btn-cam').textContent = 'Stop webcam';
+  setMsg('Head tracking live. Sit centered and press Recenter. Lean in and watch it react.');
+});
+function stopCam() {
+  video.srcObject?.getTracks().forEach(t => t.stop()); video.srcObject = null;
+  detector = null; videoTex = null; mode = 'pointer';
+  feedPlane.material.map = staticTex; feedPlane.material.needsUpdate = true;
+  $('mode').dataset.state = 'pointer'; $('mode').textContent = 'pointer'; $('btn-cam').textContent = 'Use webcam';
+  setMsg('Back to pointer mode.');
+}
+
+/* Converts a detection into an eye position, in screen heights, assuming a ~60° webcam above a ~20 cm-tall screen. */
+const SCREEN_H_M = 0.2, TAN_HALF_FOV = Math.tan(THREE.MathUtils.degToRad(30)), IPD_M = 0.063;
+function trackFace(now) {
+  if (!detector || video.readyState < 2 || video.currentTime === lastVideoTime) return;
+  lastVideoTime = video.currentTime;
+  const res = detector.detectForVideo(video, now);
+  const d = res.detections[0];
+  tele.found = d ? 1 : 0;
+  if (!d) return;
+  const k = d.keypoints;                 // 0 right eye, 1 left eye, 2 nose, 3 mouth
+  const re = k[0], le = k[1], nose = k[2];
+  const aspect = video.videoWidth / video.videoHeight;
+  const dx = (le.x - re.x) * aspect, dy = le.y - re.y;
+  const ipdFrac = Math.hypot(dx, dy) / aspect;               // fraction of frame width
+  const distM = IPD_M / (Math.max(ipdFrac, 0.02) * 2 * TAN_HALF_FOV);
+  const mx = (re.x + le.x) / 2, my = (re.y + le.y) / 2;
+  const xM = (0.5 - mx) * 2 * TAN_HALF_FOV * distM;
+  const yM = (0.5 - my) * 2 * TAN_HALF_FOV * distM / aspect;
+  rawHead.set(xM / SCREEN_H_M, yM / SCREEN_H_M + H / 2, distM / SCREEN_H_M);   // webcam sits on the top edge
+  target.set((rawHead.x - centerOffset.x) * parallax, (rawHead.y - centerOffset.y) * parallax, THREE.MathUtils.clamp(rawHead.z, 0.6, 6));
+  tele.score = d.categories?.[0]?.score ?? 0;
+  tele.roll = Math.atan2(dy, dx);
+  tele.yaw = ((nose.x - mx) / Math.max(Math.abs(le.x - re.x), 1e-3)) * 1.4;
+  tele.elx = le.x; tele.erx = re.x;
+}
+
+/* ---------- off-axis projection ---------- */
+function applyOffAxis(e) {
+  camera.position.copy(e);
+  camera.quaternion.identity();
+  camera.updateMatrixWorld();
+  const n = 0.05, f = 20, s = n / e.z;
+  camera.projectionMatrix.makePerspective((-W / 2 - e.x) * s, (W / 2 - e.x) * s, (H / 2 - e.y) * s, (-H / 2 - e.y) * s, n, f);
+  camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
+}
+
+/* ---------- film grain overlay ---------- */
+const grainCanvas = noiseCanvas(128, 128, 255, 0);
+$('grain').style.backgroundImage = `url(${grainCanvas.toDataURL()})`;
+
+/* ---------- loop ---------- */
+const lookTarget = new THREE.Vector2();
+const fmt = (v) => (v >= 0 ? ' ' : '') + v.toFixed(3);
+let frames = 0, fpsT = performance.now(), staticT = 0, twitchT = 3, twitch = new THREE.Vector2();
+
+function frame(now) {
+  requestAnimationFrame(frame);
+  const t = now / 1000;
+  if (mode === 'face') trackFace(now);
+  else if (now - lastInput > 3500 && !reduced) {
+    // idle drift so the depth reads even before anyone touches it
+    target.set(Math.sin(t * 0.45) * W * 0.45, Math.sin(t * 0.31) * 0.25 + 0.05, distZ + Math.sin(t * 0.2) * 0.2);
+  }
+  const p = mode === 'pointer' ? parallax : 1;
+  const goal = mode === 'pointer' ? new THREE.Vector3(target.x * p, target.y * p, target.z) : target;
+  eye.lerp(goal, mode === 'face' ? 0.35 : 0.08);
+  applyOffAxis(eye);
+
+  // the head turns to find you
+  const hp = new THREE.Vector3(); head.getWorldPosition(hp);
+  const toEye = eye.clone().sub(hp);
+  const yaw = THREE.MathUtils.clamp(Math.atan2(toEye.x, toEye.z), -0.7, 0.7);
+  const pitch = THREE.MathUtils.clamp(-Math.atan2(toEye.y, Math.hypot(toEye.x, toEye.z)), -0.45, 0.35);
+  if (t > twitchT) { twitch.set((Math.random() - 0.5) * 0.25, (Math.random() - 0.5) * 0.15); twitchT = t + 2 + Math.random() * 4; }
+  twitch.multiplyScalar(0.94);
+  lookTarget.lerp(new THREE.Vector2(yaw + twitch.x, pitch + twitch.y), 0.07);
+  head.rotation.y = lookTarget.x;
+  head.rotation.x = lookTarget.y + Math.sin(t * 1.3) * 0.012;
+  head.rotation.z = Math.sin(t * 0.7) * 0.02 - lookTarget.x * 0.08;
+  neck.rotation.y = lookTarget.x * 0.25;
+
+  // closer viewer → wider jaw, hotter eyes, tighter pupils
+  const close = THREE.MathUtils.clamp((2.0 - eye.z) / 1.2, 0, 1);
+  const snap = Math.pow(Math.max(0, Math.sin(t * 0.55)), 12);
+  jaw.rotation.x = 0.04 + 0.12 * Math.sin(t * 2.1) ** 2 * 0.3 + snap * 0.32 + close * 0.28;
+  mouthGlow.intensity = jaw.rotation.x * 3;
+  M.lens.emissiveIntensity = 1.8 + close * 2.5 + Math.sin(t * 9) * 0.08;
+  eyeGlow.intensity = 0.3 + close * 0.9;
+  for (const { pupil } of eyes) pupil.scale.setScalar(1.15 - close * 0.6);
+
+  key.intensity = 30 * (1 - 0.04 * Math.max(0, Math.sin(t * 23) * Math.sin(t * 3.7)));
+
+  if (!videoTex && t - staticT > 0.06) { drawStatic(); staticT = t; }
+  if (!reduced) $('grain').style.backgroundPosition = `${(Math.random() * 128) | 0}px ${(Math.random() * 128) | 0}px`;
+
+  renderer.render(scene, camera);
+
+  // telemetry
+  $('t-found').textContent = mode === 'face' ? tele.found : '—';
+  $('t-score').textContent = mode === 'face' ? tele.score.toFixed(3) : '—';
+  $('t-roll').textContent = mode === 'face' ? fmt(tele.roll) : '—';
+  $('t-yaw').textContent = mode === 'face' ? fmt(tele.yaw) : '—';
+  $('t-elx').textContent = mode === 'face' ? tele.elx.toFixed(3) : '—';
+  $('t-erx').textContent = mode === 'face' ? tele.erx.toFixed(3) : '—';
+  $('t-hx').textContent = fmt(eye.x); $('t-hy').textContent = fmt(eye.y); $('t-hz').textContent = fmt(eye.z);
+  frames++;
+  if (now - fpsT > 1000) { $('fps').textContent = `${frames} fps`; frames = 0; fpsT = now; }
+}
+layout();
+drawStatic();
+requestAnimationFrame(frame);
+</script>
